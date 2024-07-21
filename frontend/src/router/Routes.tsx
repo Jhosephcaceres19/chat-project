@@ -1,6 +1,6 @@
 import { App } from '../App'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Home } from '../view/home/Home';
+import { createBrowserRouter, RouterProvider,Navigate } from 'react-router-dom'
+import { Register } from '../view/home/Register';
 import { Chat } from '../view/chat/Chat';
 
 export const Routes = () => {
@@ -10,8 +10,8 @@ export const Routes = () => {
       element:<App/>,
     },
     {
-      path:'/home',
-      element:<Home/>
+      path:'/register',
+      element:<Register/>
     },
     {
       path:'/chat',
