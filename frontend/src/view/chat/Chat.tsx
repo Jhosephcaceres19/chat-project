@@ -1,8 +1,7 @@
-// src/view/chat/Chat.tsx
 import { io } from "socket.io-client";
 import { useState, useEffect } from "react";
 
-const socket = io("/");
+const socket = io();
 
 export const Chat = () => {
   const [message, setMessage] = useState("");
@@ -23,7 +22,10 @@ export const Chat = () => {
 
   useEffect(() => {
     const receiveMessage = (message: any) => {
-      setMessages((state) => [...state, message]);
+      console.log("mensajae recibido",message)
+      if(message.from !== username){
+        setMessages((state) => [...state, message]);
+      }
     };
 
     socket.on("message", receiveMessage);

@@ -25,6 +25,7 @@ export const Register = () => {
     socket.emit("setUsername", values.nickname);
     localStorage.setItem("username", values.nickname);
     navigate("/chat");
+    console.log("hola",values.nickname)
   };
 
   return (
@@ -34,18 +35,24 @@ export const Register = () => {
       onSubmit={handleSubmit}
     >
       {() => (
-        <Form>
-          <div>Regístrate para chatear con AMDIRION !!!</div>
-          <div>
-            <Field name="nickname" type="text" placeholder="Nickname" />
-            <ErrorMessage name="nickname" />
-          </div>
-          <div>
-            <Field name="phone" type="text" placeholder="Número" />
-            <ErrorMessage name="phone" />
-          </div>
-          <button type="submit">Enviar</button>
-        </Form>
+        <div className="bg-gradient-to-b from-black via-sky-800 to-sky-700 h-screen text-white">
+          <Form className=" flex flex-col justify-center items-center h-screen ">
+            <div className="border-solid border-2 border-black rounded-md p-4 flex flex-col justify-center gap-6">
+              <div>Regístrate para chatear con AMDIRION !!!</div>
+              <div className="flex justify-center text-black flex-col items-center">
+                <Field name="nickname" type="text" placeholder="Nickname" />
+                <ErrorMessage name="nickname" />
+              </div>
+              <div className="flex justify-center text-black flex-col items-center">
+                <Field name="phone" type="text" placeholder="Número" />
+                <ErrorMessage name="phone" />
+              </div>
+              <div className="flex justify-center">
+              <button type="submit" className="bg-emerald-400 w-20  hover:bg-yellow-400">Enviar</button>
+              </div>
+            </div>
+          </Form>
+        </div>
       )}
     </Formik>
   );
