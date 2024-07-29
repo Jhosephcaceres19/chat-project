@@ -1,7 +1,6 @@
-import { io } from "socket.io-client";
+// src/view/home/Chat.tsx
 import { useState, useEffect } from "react";
-
-const socket = io();
+import socket from '../../socket/socket'; // Importa la conexión centralizada
 
 export const Chat = () => {
   const [message, setMessage] = useState("");
@@ -22,10 +21,8 @@ export const Chat = () => {
 
   useEffect(() => {
     const receiveMessage = (message: any) => {
-      console.log("mensajae recibido",message)
-      if(message.from !== username){
-        setMessages((state) => [...state, message]);
-      }
+      console.log("mensaje recibido", message);
+      setMessages((state) => [...state, message]);
     };
 
     socket.on("message", receiveMessage);

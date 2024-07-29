@@ -2,9 +2,7 @@
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import io from "socket.io-client";
-
-const socket = io("/");
+import socket from '../../socket/socket'; // Importa la conexión centralizada
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -25,7 +23,7 @@ export const Register = () => {
     socket.emit("setUsername", values.nickname);
     localStorage.setItem("username", values.nickname);
     navigate("/chat");
-    console.log("hola",values.nickname)
+    console.log("hola", values.nickname);
   };
 
   return (
@@ -48,7 +46,9 @@ export const Register = () => {
                 <ErrorMessage name="phone" />
               </div>
               <div className="flex justify-center">
-              <button type="submit" className="bg-emerald-400 w-20  hover:bg-yellow-400">Enviar</button>
+                <button type="submit" className="bg-emerald-400 w-20 hover:bg-yellow-400">
+                  Enviar
+                </button>
               </div>
             </div>
           </Form>
