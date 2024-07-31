@@ -1,8 +1,7 @@
-// src/view/home/Register.tsx
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import socket from '../../socket/socket'; // Importa la conexión centralizada
+import socket from "../../socket/socket";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -19,9 +18,10 @@ export const Register = () => {
     });
   };
 
-  const handleSubmit = (values: { nickname: string }) => {
+  const handleSubmit = (values: { nickname: string; phone: string }) => {
     socket.emit("setUsername", values.nickname);
     localStorage.setItem("username", values.nickname);
+    localStorage.setItem("number", values.phone);
     navigate("/chat");
     console.log("hola", values.nickname);
   };
@@ -36,17 +36,42 @@ export const Register = () => {
         <div className="bg-gradient-to-b from-black via-sky-800 to-sky-700 h-screen text-white">
           <Form className=" flex flex-col justify-center items-center h-screen ">
             <div className="border-solid border-2 border-black rounded-md p-4 flex flex-col justify-center gap-6">
-              <div>Regístrate para chatear con AMDIRION !!!</div>
-              <div className="flex justify-center text-black flex-col items-center">
-                <Field name="nickname" type="text" placeholder="Nickname" />
-                <ErrorMessage name="nickname" />
+              <div className="text-xl font-bold">
+                Regístrate para chatear con AMDIRION !!!
+              </div>
+              <div className="flex justify-center text-black  flex-col items-center ">
+                <label htmlFor="nickname" className="text-white mb-2 text-lg font-bold">
+                  Usuario
+                </label>
+                <Field
+                  name="nickname"
+                  type="text"
+                  placeholder="Nickname"
+                  className="rounded-md p-2"
+                />
+                <p className="text-[red] text-lg">
+                  <ErrorMessage name="nickname" />
+                </p>
               </div>
               <div className="flex justify-center text-black flex-col items-center">
-                <Field name="phone" type="text" placeholder="Número" />
-                <ErrorMessage name="phone" />
+                <label htmlFor="phone" className="text-white mb-2 text-lg font-bold">
+                  Número
+                </label>
+                <Field
+                  name="phone"
+                  type="text"
+                  placeholder="Número"
+                  className="rounded-md p-2"
+                />
+                <p className="text-[red] text-lg">
+                  <ErrorMessage name="phone" />
+                </p>
               </div>
               <div className="flex justify-center">
-                <button type="submit" className="bg-emerald-400 w-20 hover:bg-yellow-400">
+                <button
+                  type="submit"
+                  className="bg-sky-600 hover:bg-green-500 w-20 rounded-md"
+                >
                   Enviar
                 </button>
               </div>

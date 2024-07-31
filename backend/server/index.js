@@ -1,4 +1,3 @@
-// index.js
 import express from 'express';
 import { createServer } from 'node:http';
 import { Server } from 'socket.io';
@@ -33,13 +32,13 @@ io.on('connection', (socket) => {
   });
 
   // Manejar mensajes
-  socket.on('message', (body) => {
-    const message = {
-      body,
+  socket.on('message', (message) => {
+    const messageObj = {
+      body: message.body || message,
       from: socket.username || socket.id.slice(6),
     };
-    console.log(socket.id, 'Mensaje enviado:', message);
-    io.emit('message', message);
+    console.log(socket.id, 'Mensaje enviado:', messageObj);
+    io.emit('message', messageObj);
   });
 
   // Manejar desconexión
