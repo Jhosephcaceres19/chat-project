@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
   res.send('<h1>Hola mundo</h1>');
 });
 
-const users = {}; // Para llevar un registro de los usuarios conectados
+const users = {}; 
 
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);

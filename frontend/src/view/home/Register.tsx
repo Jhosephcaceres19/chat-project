@@ -15,20 +15,23 @@ export const Register = () => {
         .length(8, "El número debe tener 8 dígitos")
         .matches(/^\d+$/, "Debe ser un número entero")
         .required("Requerido"),
+      image:Yup.string()
+        .required("requerido")
     });
   };
 
-  const handleSubmit = (values: { nickname: string; phone: string }) => {
+  const handleSubmit = (values: { nickname: string; phone: string; image:string}) => {
     socket.emit("setUsername", values.nickname);
     localStorage.setItem("username", values.nickname);
     localStorage.setItem("number", values.phone);
+    localStorage.setItem("image",values.image)
     navigate("/chat");
     console.log("hola", values.nickname);
   };
 
   return (
     <Formik
-      initialValues={{ nickname: "", phone: "" }}
+      initialValues={{ nickname: "", phone: "", image:"" }}
       validationSchema={getValidationSchema()}
       onSubmit={handleSubmit}
     >
@@ -65,6 +68,20 @@ export const Register = () => {
                 />
                 <p className="text-[red] text-lg">
                   <ErrorMessage name="phone" />
+                </p>
+              </div>
+              <div className="flex justify-center text-black  flex-col items-center">
+                <label htmlFor="image" className="text-white mb-2 text-lg font-bold">
+                  Imagen
+                </label>
+                <Field
+                name="image"
+                type="text"
+                placeholder="url imagen"
+                className="rounded-md p-2"
+                />
+                <p className="text-[red] text-lg">
+                  <ErrorMessage name="image"/>
                 </p>
               </div>
               <div className="flex justify-center">
