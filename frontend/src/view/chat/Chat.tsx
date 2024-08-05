@@ -46,39 +46,67 @@ export const Chat = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-b from-black via-sky-800 to-sky-700 text-white grid grid-cols-3 justify-center h-screen">
-      <div className="hidden md:flex flex-col col-span-1 border-solid border-2 border-black m-10 ">
-        <div className="font-extrabold text-3xl text-white rounded-t-2xl bg-gradient-to-r from-sky-800 via-sky-600 to-sky-500 w-full h-auto flex flex-col justify-center items-center p-2 gap-2">
-          {username}
-          <img
-            src={image || "defauld image.jpg"}
-            alt={username || "usuario"}
-            className="w-24 h-auto rounded-full"
-          />
-          <div className="flex gap-3  ml-2 text-xl">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+    <div className="bg-gradient-to-b text-black grid grid-cols-3 justify-center h-screen">
+      <div className="flex justify-center w-screen h-screen">
+        <div className="flex flex-col col-span-3 border-solid w-[350px] h-screen justify-between border-black ">
+          <div className=" text-white  h-24 flex items-center justify-between">
+            <div className="bg-slate-300 p-2 rounded-md">
+              <input
+                type="text"
+                placeholder="Buscar"
+                className="p-2 rounded-lg text-black"
               />
-            </svg>
+            </div>
+            <div className="bg-slate-300 p-2 rounded-md">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="black"
+                className="size-10 "
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                />
+              </svg>
+            </div>
+          </div>
 
-            {number}
+          <div className="flex flex-col rounded-md gap-2">
+            USUARIOS
+          </div>
+          <div className=" text-white  h-24 flex items-end justify-between">
+            <div className="bg-slate-300 p-2 rounded-md">
+              <input
+                type="text"
+                placeholder="Buscar"
+                className="p-2 rounded-lg text-black"
+              />
+            </div>
+            <div className="bg-slate-300 p-2 rounded-md">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="black"
+                className="size-10 "
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                />
+              </svg>
+            </div>
           </div>
         </div>
-
-        <div className="mt-20">user conected:</div>
       </div>
-      <div className="col-span-3 md:col-span-2 border-solid border-2 border-black bg-slate-300 rounded-xl m-10 flex flex-col justify-between">
-        <div className="p-4 h-auto">
+      <div className="hidden md:flex md:col-span-3 col-span-1 border-solid border-2 border-black bg-slate-300 rounded-xl m-10 flex-col justify-between">
+        <div className=" h-auto">
           <ul className="text-white">
             {messages.map((msg, i) => (
               <li
@@ -88,7 +116,12 @@ export const Chat = () => {
                 }`}
               >
                 <div className="flex flex-row items-center gap-3">
-                <img src={image || 'image'} alt={username || 'username'} className="w-10 h-auto rounded-full"/>{msg.from}: <p className="text-xl">{String(msg.body)}</p>
+                  <img
+                    src={image || "image"}
+                    alt={username || "username"}
+                    className="w-10 h-auto rounded-full"
+                  />
+                  {msg.from}: <p className="text-xl">{String(msg.body)}</p>
                 </div>
               </li>
             ))}

@@ -1,6 +1,6 @@
 import { App } from '../App'
 import { createBrowserRouter, RouterProvider,Navigate } from 'react-router-dom'
-import { Register } from '../view/home/Register';
+import { Register } from '../container/logs/Register';
 import { Chat } from '../view/chat/Chat';
 
 export const Routes = () => {
