@@ -13,5 +13,5 @@ https://www.figma.com/community/file/1212265978123382691/chatgpt-chat-bot-app-ui
 https://dribbble.com/shots/5384246-Chat-Dashboard-Web-App
 
 
-*mobile
+* mobile
 https://dribbble.com/shots/18413430-Ussage-Mobile-App-Design

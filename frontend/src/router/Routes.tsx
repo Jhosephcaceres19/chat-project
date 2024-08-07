@@ -1,7 +1,9 @@
 import { App } from '../App'
-import { createBrowserRouter, RouterProvider,Navigate } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import { Register } from '../container/logs/Register';
-import { Chat } from '../view/chat/Chat';
+import { Contact } from '../container/contact/Contact';
+import { Chat } from '../container/chat/Chat';
+import { Home } from '../container/Home';
 
 export const Routes = () => {
   const routeForPublic = [
@@ -14,7 +16,15 @@ export const Routes = () => {
       element:<Register/>
     },
     {
-      path:'/chat',
+      path:'/home',
+      element:<Home/>
+    },
+    {
+      path:'/contact',
+      element:<Contact/>
+    },
+    {
+      path: '/chat',
       element:<Chat/>
     }
   ];
