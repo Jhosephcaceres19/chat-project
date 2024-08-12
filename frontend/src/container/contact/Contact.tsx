@@ -1,10 +1,25 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { fetchUsers } from "../../utils/api";
+import { UserList } from "../user/UserList";
 
-export const Contact = () => {
+export const Contact: React.FC = () => {
+  const [users, setUsers] = useState([]); 
+
+  useEffect(() => {
+    const clean = fetchUsers(setUsers); 
+    return clean;
+  }, []);
+
+
+  console.log("los datos son los siguientes", users);
   return (
-    <div className="flex flex-col min-h-screen w-full">
-      <nav className="flex justify-around items-center p-4 bg-violet-100 w-full top-0 z-10 rounded-b-2xl">
-        <input type="text" placeholder="Buscar" className="p-2 rounded-2xl border-violet-700 border-2" />
+    <div className="flex flex-col min-h-screen w-full justify-center">
+      <nav className="flex justify-around items-center p-3 bg-violet-100 w-full top-0 z-10 rounded-b-2xl lg:rounded-none">
+        <input
+          type="text"
+          placeholder="Buscar"
+          className="p-2 rounded-2xl border-violet-700 border-2"
+        />
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -12,7 +27,7 @@ export const Contact = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="purple"
-            className="w-8 h-8"
+            className="size-8"
           >
             <path
               strokeLinecap="round"
@@ -23,14 +38,14 @@ export const Contact = () => {
         </div>
       </nav>
 
-      <main className="flex-grow p-8 mt-14 " >
-        {/* Aquí puedes agregar el contenido principal de la página */}
-        <div className="bg-violet-100 p-2 rounded-xl">
-            usuario
+      <main className="flex-grow p-8 mt-14 ">
+        {/* Aquí se agregaran los  usuarios registrados el nickname y imagen*/}
+        <div className=" p-2 rounded-xl ">
+            <UserList users={users}/>
         </div>
       </main>
 
-      <footer className="flex p-2 bg-violet-100 items-center justify-center  bottom-0  rounded-t-2xl">
+      <footer className="flex p-6 bg-violet-100 items-center justify-center  bottom-0  rounded-t-2xl lg:hidden">
         <div className="flex space-x-4 items-center gap-10">
           <div>
             <svg
@@ -39,7 +54,7 @@ export const Contact = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="purple"
-              className="w-6 h-6"
+              className="size-8"
             >
               <path
                 strokeLinecap="round"
@@ -55,7 +70,7 @@ export const Contact = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="white"
-              className="w-6 h-6"
+              className="size-8"
             >
               <path
                 strokeLinecap="round"
@@ -71,7 +86,7 @@ export const Contact = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="purple"
-              className="w-6 h-6"
+              className="size-8"
             >
               <path
                 strokeLinecap="round"

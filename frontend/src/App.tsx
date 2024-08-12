@@ -14,7 +14,7 @@ export const App = () => {
           <div className="flex justify-center items-center content-center mt-14">
             <img
               src={Image.ImageLogo}
-              className="w-[300px] h-auto mt-20"
+              className="w-[400px] h-auto mt-20 md:w-[500px]"
               alt=""
             />
           </div>

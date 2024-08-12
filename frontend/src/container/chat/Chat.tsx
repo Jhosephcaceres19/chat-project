@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const Chat = () => {
   return (
     <div className="w-full min-h-screen flex flex-col">
-      <nav className="flex justify-around items-center p-4 bg-violet-100 w-full top-0  z-10 rounded-b-2xl ">
+      <nav className="flex justify-around items-center p-4 bg-violet-100 w-full top-0  z-10 rounded-b-2xl lg:rounded-none">
         <Link to="/contact">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +11,7 @@ export const Chat = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="purple"
-            className="size-6"
+            className="size-8 "
           >
             <path
               strokeLinecap="round"
@@ -20,11 +20,11 @@ export const Chat = () => {
             />
           </svg>
         </Link>
-        <div>user</div>
+        <div >user</div>
       </nav>
-      <main className="flex-grow p-8 mt-14">meage</main>
-      <footer className="flex p-2 bg-violet-100 items-center justify-around  bottom-0  rounded-t-2xl">
-        <input type="text" placeholder="Escribir" className="p-2" />
+      <main className="flex-grow p-8 mt-14 text-center">mensaje</main>
+      <footer className="flex p-9 bg-violet-100 items-center justify-center gap-20  bottom-0  rounded-t-2xl lg:rounded-none">
+        <input type="text" placeholder="Escribir" className="p-2 rounded-lg md:w-[60%]" />
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"

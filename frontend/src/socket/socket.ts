@@ -1,5 +1,10 @@
-// src/socket.ts
 import io from 'socket.io-client';
 
-const socket = io('/'); // La URL del servidor debe coincidir con la del backend
+const socket = io('/', {
+  transports: ['websocket'],
+  cors: {
+    origin: 'http://localhost:5173'
+  }
+});
+
 export default socket;
